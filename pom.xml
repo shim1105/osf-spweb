@@ -6,9 +6,12 @@
   <packaging>war</packaging>
   
     <properties>
-
+	
 		<!-- Generic properties -->
-		<java.version>1.6</java.version>
+		<finalName>osf</finalName>
+		<maven.compiler.target>1.8</maven.compiler.target>
+		<maven.compiler.source>1.8</maven.compiler.source>
+		<java.version>1.8</java.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		
@@ -33,8 +36,11 @@
 
 	</properties>
 	
+	<build>
+		<finalName>${finalName}</finalName>
+	</build>
 	<dependencies>
-	
+		
 		<!-- Spring MVC -->
 		<dependency>
 			<groupId>org.springframework</groupId>
