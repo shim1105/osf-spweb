@@ -1,9 +1,11 @@
 package com.osf.web.controller;
 
+import org.junit.runner.Request;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.osf.web.service.AddrService;
 
@@ -11,9 +13,10 @@ import com.osf.web.service.AddrService;
 public class AddrController {
 	@Autowired
 	private AddrService as;
-	@RequestMapping("/addr/list")
+	@RequestMapping(value="/addr/list",method=RequestMethod.GET)  // 이렇게 하면 GET 방식 밖에 호출이 안된다 @@
 	public String goAddrList(Model m) {
 		m.addAttribute("addrList",as.selectAddrList());
-		return "addr/list";
+		return "/uri/addr/list";
 	}
+	
 }

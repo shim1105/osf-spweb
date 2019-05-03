@@ -6,6 +6,7 @@ import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
+import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -16,13 +17,12 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class AddrDAOImpl implements AddrDAO {
 	@Autowired
-	private SqlSessionFactory ssf;
+	private SqlSession ss;
 	
 	@Override
 	public List<Map<String, String>> selectAddrList() {
-		SqlSession ss = ssf.openSession();
 		Map<String,String> param =new HashMap<String, String>();
-		param.put("adNum","100");
+		param.put("adNum","20");
 		param.put("adSido", "부산광역시");
 		return ss.selectList("addr.selectAddrList",param);
 	}
